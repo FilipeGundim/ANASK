@@ -1,14 +1,7 @@
-CREATE DATABASE anask_database
+create database anask_backend
+use anask_backend
+go
 
-USE anask_database
-
-GO
-
-CREATE TABLE user_login(
-id				    INT IDENTITY(1001, 1)	NOT NULL,
-senha			    VARCHAR(200)		    NOT NULL,
-PRIMARY KEY (id)
-)
 
 CREATE TABLE usuario(
 id				INT IDENTITY(1001, 1)	 NOT NULL,
@@ -16,9 +9,8 @@ nome			VARCHAR(200)		     NOT NULL,
 datanasc	    DATE				     NOT NULL,
 sexo			VARCHAR(1)			     NOT NULL,
 email			VARCHAR(200) UNIQUE		 NOT NULL,
-user_senha		INT					     NOT NULL,
-PRIMARY KEY (id),
-FOREIGN KEY (user_senha) REFERENCES user_login(id)
+user_senha		VARCHAR(20)				 NOT NULL,
+PRIMARY KEY (id)
 )
 
 CREATE TABLE projeto(
@@ -35,6 +27,7 @@ PRIMARY KEY (id)
 CREATE TABLE usuario_projeto(
 usuario_id		INT					         NOT NULL,
 projeto_id		INT					         NOT NULL,
+responsavel     VARCHAR(100),
 FOREIGN KEY (usuario_id) REFERENCES usuario(id),
 FOREIGN KEY (projeto_id) REFERENCES projeto(id),
 PRIMARY KEY (usuario_id, projeto_id)
@@ -71,7 +64,6 @@ descricao		  VARCHAR(200),
 responsavel       VARCHAR(100),
 PRIMARY KEY (id)
 )
-
 
 CREATE TABLE time_usuario(
 id_time			INT							NOT NULL,
