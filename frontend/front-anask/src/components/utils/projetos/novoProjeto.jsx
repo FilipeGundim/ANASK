@@ -1,5 +1,6 @@
 import React from 'react'
 import {Col, Button, Form } from 'react-bootstrap';
+import axios from 'axios'
 
 class ProjetoForm extends React.Component {
     constructor(props) {
@@ -9,7 +10,7 @@ class ProjetoForm extends React.Component {
             descricao: '',
             data_ini : '',
             data_fim : '',
-            responsavel : props.id
+            responsavel : 1001
         }
     }
 
@@ -20,9 +21,16 @@ class ProjetoForm extends React.Component {
         marginRight: 'auto'
     }
 
-    postAtividade(){
-        
-    } 
+    postProjeto() {
+        let url = "http://localhost:3001/cria-projeto"
+        let body = this.state
+        console.log(body)
+        axios.post(url, body).then(
+            alert("Ativiade criada com succeso!")
+        ).catch(
+            alert("Algo deu errado")
+        )
+    }
 
     render() {
         return (
@@ -37,24 +45,24 @@ class ProjetoForm extends React.Component {
                     </Form.Group>
                     <Form.Group >
                         <Form.Label>Descrição</Form.Label>
-                        <Form.Control size="lg" type="text" placeholder="Resuma o que deve ser feito em seu novo projeto!" />
+                        <Form.Control size="lg" type="text" placeholder="Resuma o que deve ser feito em seu novo projeto!" onChange = {(e)=>{this.setState({descricao : e.target.value})}}/>
                     </Form.Group>
                     <Form.Group >
                     <Form.Text className="text-muted">
-                            Agora defina a data de inicio e data final de sua atividade!.
+                            Agora defina a data de inicio e data final de seu projeto!.
                         </Form.Text>
                     </Form.Group>
                     <Form>
                         <Form.Row>
                             <Col>
-                                <Form.Control type = "date"  />
+                                <Form.Control type = "date" onChange = {(e)=>{this.setState({data_ini : e.target.value})}} />
                             </Col>
                             <Col>
-                                <Form.Control type = "date"  />
+                                <Form.Control type = "date" onChange = {(e)=>{this.setState({data_fim : e.target.value})}} />
                             </Col>
                         </Form.Row>
                     </Form>
-                    <Button className="mt-5" variant="primary" type="submit">
+                    <Button className="mt-5" variant="primary" type="submit" onClick = {()=>{this.postProjeto()}}>
                         Criar!
                     </Button>
                 </Form>

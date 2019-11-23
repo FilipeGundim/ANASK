@@ -22,16 +22,10 @@ class atividadeForm extends React.Component {
     }
 
     postAtividade() {
-        let url = "http://localhost:3001/atividade"
-        let body = {
-            titulo : this.state.titulo,
-            descricao : this.state.descricao,
-            data_ini : this.state.data_ini,
-            data_fim : this.state.data_fim,
-            responsavel : 1001
-        }
+        let url = "http://localhost:3001/cria-atividade"
+        let body = this.state
         console.log(body)
-        axios.post(url, JSON.stringify(body)).then(
+        axios.post(url, body).then(
             alert("Ativiade criada com succeso!")
         ).catch(
             alert("Algo deu errado")
