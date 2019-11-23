@@ -24,12 +24,11 @@ class ProjetoForm extends React.Component {
     postProjeto() {
         let url = "http://localhost:3001/cria-projeto"
         let body = this.state
-        console.log(body)
         axios.post(url, body).then(
             alert("Ativiade criada com succeso!")
-        ).catch(
-            alert("Algo deu errado")
-        )
+        ).catch((err)=>{
+            alert(err)
+        })
     }
 
     render() {

@@ -1,47 +1,50 @@
 import React from 'react'
-import { FormControl, Button, Container } from 'react-bootstrap'
+import {  Container } from 'react-bootstrap'
 import Jumbotron from 'react-bootstrap/Jumbotron'
-import axios from 'axios'
+import axios from 'axios';
 import { connect } from 'react-redux';
 
-class Projetos extends React.Component {
+class Atividades extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             projetos: []
         }
+        this.getProjetos();
     }
 
-    getProjetos(e) {
-        let url = `http://localhost:3001/projetos/${e}`
+    getProjetos() {
+        let url = `http://localhost:3001/projeto/${this.props.user_id}`
         axios.get(url).then(res => {
             let data = res.data
+            console.log(data)
             this.setState({
-                projetos: data.recordset
+                projetos: data.recordsets[0]
             })
         })
     }
 
-    inserirUserProjeto(row){
-        let url = `http://localhost:3001/usuario-projeto/${this.props.user_id}/${row.id}`
-        axios.post(url).then(res=>{
-            console.log(res.status)
-        }) 
-    }
-
-    inputStyle = {
-        width: "600px",
+    divStyle = {
+        width: "900px",
         marginLeft: "auto",
         marginRight: "auto",
         justifyContent: "center"
     }
 
+    cardStyle = {
+        display: 'flex',
+        flexDirection: 'row',
+        padding: '10px',
+        justifyContent: 'center'
+    }
+
     render() {
         return (
-            <div>
-                <FormControl type="text" placeholder="Procurar projetos" className="mt-2 mb-2" style={this.inputStyle} onChange={(e) => { this.getProjetos(e.target.value) }} />
-                {
-                    this.state.projetos.map(row => (
+            <div style={this.divStyle}>
+                <h2>Projetos!</h2>
+                <br />
+                <div style={this.cardStyle}>
+                    {this.state.projetos.map(row => (
                         <Jumbotron fluid>
                             <Container>
                                 <h1>{row.titulo}</h1>
@@ -51,11 +54,10 @@ class Projetos extends React.Component {
                                     <br />
                                     fim: {row.data_fim.replace("T00:00:00.000Z", "")}
                                 </p>
-                                <Button onClick={()=>{this.inserirUserProjeto(row)}}>Ingressar</Button>
                             </Container>
                         </Jumbotron>
-                    ))
-                }
+                    ))}
+                </div>
             </div>
         )
     }
@@ -65,4 +67,4 @@ const mapStateToProps = state => ({
     user_id: state.login.user_id
 })
 
-export default connect(mapStateToProps, null)(Projetos);
+export default connect(mapStateToProps)(Atividades);

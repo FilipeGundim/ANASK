@@ -5,6 +5,8 @@ import Atividades from './atividades/atividades'
 import AtividadeForm from './atividades/novaAtividade'
 import ProjetoForm from './projetos/novoProjeto'
 import Projetos from './projetos/projetos'
+import Historico from './atividades/historico'
+import ProjetosPendentes from './projetos/projetosPendentes'
 
 const Router = (props) => {
     return (
@@ -16,6 +18,8 @@ const Router = (props) => {
                     <Route path="/criar-atividade" component={AtividadeForm} />
                     <Route path="/criar-projeto" component={ProjetoForm} />
                     <Route path="/busca-projetos" component={Projetos} />
+                    <Route path="/projeto-pendente" component={ProjetosPendentes} />
+                    <Route path="/historico-atividades" component={Historico} />
                 </Switch>
             </BrowserRouter>
         </div>
