@@ -1,6 +1,7 @@
 import React from 'react'
 import { Navbar, Nav, NavDropdown, Badge, Form, Button, ButtonGroup } from 'react-bootstrap'
 import { connect } from 'react-redux';
+import CadastroModel from './login/cadastro'
 import axios from 'axios'
 
 
@@ -10,7 +11,8 @@ class Header extends React.Component {
         this.state = {
             id_usuario: 1001,
             badgeA: [],
-            badgeP: []
+            badgeP: [],
+            open: false
         }
         this.getBadgeA();
 
@@ -33,6 +35,18 @@ class Header extends React.Component {
             this.setState({
                 badgeP: data.recordsets[0]
             })
+        })
+    }
+
+    cadastroOpen(){
+        this.setState({
+            open: true
+        })
+    }
+
+    cadastroClose(){
+        this.setState({
+            open: false
         })
     }
 
@@ -59,12 +73,13 @@ class Header extends React.Component {
                     </Nav>
                     <ButtonGroup aria-label="Basic example" className="mr-2">
                         <Button variant="secondary">Log-in</Button>
-                        <Button variant="secondary">Cadastrar</Button>
+                        <Button variant="secondary" onClick={()=>{this.cadastroOpen()}}>Cadastrar</Button>
                     </ButtonGroup>
                     <Form inline>
                         <Button variant="outline-success" href="/busca-projetos">Projetos no ANASK</Button>
                     </Form>
                 </Navbar.Collapse>
+                <CadastroModel show = {this.state.open} close = {()=>{this.cadastroClose()}} />
             </Navbar>
         )
     }

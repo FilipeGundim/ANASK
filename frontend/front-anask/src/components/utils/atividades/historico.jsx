@@ -23,9 +23,11 @@ class Historico extends React.Component {
     }
 
     cardStyle = {
-        width: "900px",
-        marginLeft: "auto",
-        marginRight: "auto"
+        display: 'flex',
+        flexWrap: 'wrap',
+        padding: '10px',
+        justifyContent: "center",
+        alignItems: "center"
     }
 
     render() {

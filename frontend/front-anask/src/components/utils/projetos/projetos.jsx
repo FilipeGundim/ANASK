@@ -24,6 +24,7 @@ class Projetos extends React.Component {
 
     inserirUserProjeto(row){
         let url = `http://localhost:3001/usuario-projeto/${this.props.user_id}/${row.id}`
+        console.log(row)
         axios.post(url).then(res=>{
             console.log(res.status)
         }) 

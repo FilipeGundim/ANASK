@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Modal from 'react-bootstrap/Modal'
 import { Button, Form, FormControl, Col } from 'react-bootstrap'
+import axios from 'axios'
 
 const AtividadeModal = (props) => {
 
@@ -12,6 +13,21 @@ const AtividadeModal = (props) => {
     const [descricao, setDescricao] = useState('')
     const [data_ini, setData_ini] = useState(0)
     const [data_fim, setData_fim] = useState(0)
+
+    function editaAtividade(){
+        let url = "http://localhost:3001/edita-atividade"
+        let objeto = {
+            titulo,
+            descricao,
+            data_ini, 
+            data_fim,
+            atividade: atividade.id
+        }
+
+        axios.post(url, objeto).then(res=>{
+            alert(res.status)
+        })
+    }
 
     return (
         <Modal show={show} onHide={show} onClose={close}>
@@ -37,7 +53,7 @@ const AtividadeModal = (props) => {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={close}>Fechar</Button>
-                    <Button variant="primary">Salvar alterações</Button>
+                    <Button variant="primary" onClick={()=>{editaAtividade()}}>Salvar alterações</Button>
                 </Modal.Footer>
             </Modal.Dialog>
         </Modal>

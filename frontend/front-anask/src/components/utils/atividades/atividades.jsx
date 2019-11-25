@@ -53,9 +53,10 @@ class Atividades extends React.Component {
 
     cardStyle = {
         display: 'flex',
-        flexDirection: 'row',
+        flexWrap: 'wrap',
         padding: '10px',
-        justifyContent: 'center'
+        justifyContent: "center",
+        alignItems: "center"
     }
 
     render() {

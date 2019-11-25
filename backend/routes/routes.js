@@ -19,8 +19,9 @@ app.post('/criar-user', (req, res) => {
     request.query(`insert into usuario values ('${body.nome}', '${body.datanasc}', '${body.sexo}', '${body.email}', '${body.senha}');`,
         (err, recordset) => {
             if (err) {
-                console.log(err)
+                console.log(err) 
             }
+            console.log("usuario inserido")
             res.status(200)
         })
 })
@@ -60,6 +61,21 @@ app.post('/cria-atividade', (req, res) => {
     res.status(200);
 })
 
+app.post('edita-atividade',(req, res)=>{
+
+    let body = req.body
+
+    request.query(`UPDATE usuario_atividade SET titulo = '${body.titulo}', descricao ='${body.descricao}', data_ini= '${body.data_ini}', 
+     data_fim = '${body.data_fim}' WHERE id = ${body.atividade}`,
+        (err, recordset) => {
+            if (err) {
+                console.log(err)
+            }
+
+        })
+    res.status(200);
+})
+
 app.post('/finaliza-atividade/:atividade', (req, res) => {
     let atividade = req.params.atividade
     request.query(`UPDATE usuario_atividade SET status = 0  WHERE id = ${atividade}`,
@@ -86,7 +102,7 @@ app.post('/cria-projeto', (req, res) => {
 
 app.post('/usuario-projeto/:id/:projeto', (req, res) => {
     let id = req.params.id
-    let projeto = req.params.id
+    let projeto = req.params.projeto
     request.query(`INSERT INTO usuario_projeto VALUES(${id}, ${projeto}, ${id})`, (err, recordset) => {
         if (err) {
             console.log(err)
