@@ -4,12 +4,10 @@ import { connect } from 'react-redux';
 import CadastroModel from './login/cadastro'
 import axios from 'axios'
 
-
 class Header extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            id_usuario: 1001,
             badgeA: [],
             badgeP: [],
             open: false
@@ -19,7 +17,7 @@ class Header extends React.Component {
     }
 
     getBadgeA() {
-        let url = `http://localhost:3001/atividades/${this.state.id_usuario}`
+        let url = `http://localhost:3001/atividades/${this.props.user_id}`
         axios.get(url).then(res => {
             let data = res.data
             this.setState({
@@ -29,7 +27,7 @@ class Header extends React.Component {
     }
 
     getBadgeP(){
-        let url = `http://localhost:3001/atividades/${this.state.id_usuario}`
+        let url = `http://localhost:3001/atividades/${this.props.user_id}`
         axios.get(url).then(res => {
             let data = res.data
             this.setState({
@@ -86,7 +84,7 @@ class Header extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    user_id: state.user_id
+    user_id: state.login.user_id
 })
 
 export default connect(mapStateToProps)(Header);

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Modal from 'react-bootstrap/Modal'
-import { Button, Form, FormControl, Col } from 'react-bootstrap'
+import { Button, Form, FormControl } from 'react-bootstrap'
 import axios from 'axios'
 
 const CadastroModel = (props) => {

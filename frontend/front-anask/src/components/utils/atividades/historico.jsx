@@ -1,19 +1,19 @@
 import React from 'react'
 import axios from 'axios'
+import { connect } from 'react-redux';
 import { Card } from 'react-bootstrap'
 
 class Historico extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            atividades: [],
-            id_usuario: 1001
+            atividades: []
         }
         this.getTodasAtividades();
     }
 
     getTodasAtividades() {
-        let url = `http://localhost:3001/todas-atividades/${this.state.id_usuario}`
+        let url = `http://localhost:3001/todas-atividades/${this.props.user_id}`
         axios.get(url).then(res => {
             let data = res.data
             this.setState({
@@ -49,4 +49,9 @@ class Historico extends React.Component {
     }
 }
 
-export default Historico;
+const mapStateToProps = state => ({
+    user_id: state.login.user_id
+})
+
+
+export default connect(mapStateToProps)(Historico);
