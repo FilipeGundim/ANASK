@@ -44,8 +44,8 @@ class Atividades extends React.Component {
                 <h2>Projetos!</h2>
                 <br />
                 <div style={this.cardStyle}>
-                    {this.state.projetos.map(row => (
-                        <Jumbotron fluid>
+                    {this.state.projetos.map((row, idx) => (
+                        <Jumbotron fluid key={idx}>
                             <Container>
                                 <h1>{row.titulo}</h1>
                                 <h2>{row.descricao}</h2>

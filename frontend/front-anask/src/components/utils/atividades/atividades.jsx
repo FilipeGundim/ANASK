@@ -65,9 +65,9 @@ class Atividades extends React.Component {
                 <h2>Aqui estão todas suas atividades pendentes!</h2>
                 <br/>
                 <div style={this.cardStyle}>
-                {this.state.atividades.map(row => (
-                    <Card bg="dark" text="white" style={{ width: '18rem', margin: '15px' }}>
-                        <Card.Body key={row.id}>
+                {this.state.atividades.map((row, idx) => (
+                    <Card bg="dark" text="white" style={{ width: '18rem', margin: '15px' }} key={idx}>
+                        <Card.Body >
                             <Card.Title>{row.titulo}</Card.Title>
                             <Card.Subtitle className="mb-2 text-muted">Status (Pendente)</Card.Subtitle>
                             <Card.Text>

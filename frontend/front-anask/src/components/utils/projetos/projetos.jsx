@@ -22,12 +22,12 @@ class Projetos extends React.Component {
         })
     }
 
-    inserirUserProjeto(row){
+    inserirUserProjeto(row) {
         let url = `http://localhost:3001/usuario-projeto/${this.props.user_id}/${row.id}`
         console.log(row)
-        axios.post(url).then(res=>{
+        axios.post(url).then(res => {
             console.log(res.status)
-        }) 
+        })
     }
 
     inputStyle = {
@@ -42,8 +42,8 @@ class Projetos extends React.Component {
             <div>
                 <FormControl type="text" placeholder="Procurar projetos" className="mt-2 mb-2" style={this.inputStyle} onChange={(e) => { this.getProjetos(e.target.value) }} />
                 {
-                    this.state.projetos.map(row => (
-                        <Jumbotron fluid>
+                    this.state.projetos.map((row, idx) => (
+                        <Jumbotron fluid key={idx}>
                             <Container>
                                 <h1>{row.titulo}</h1>
                                 <h2>{row.descricao}</h2>
@@ -52,7 +52,7 @@ class Projetos extends React.Component {
                                     <br />
                                     fim: {row.data_fim.replace("T00:00:00.000Z", "")}
                                 </p>
-                                <Button onClick={()=>{this.inserirUserProjeto(row)}}>Ingressar</Button>
+                                <Button onClick={() => { this.inserirUserProjeto(row) }}>Ingressar</Button>
                             </Container>
                         </Jumbotron>
                     ))

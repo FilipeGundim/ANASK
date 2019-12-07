@@ -7,8 +7,8 @@ import Router from './components/utils/routes';
 function App() {
   return (
     <div className="App">
-      <Header id = {1001} />
-      <Router id = {1001} />
+      <Header />
+      <Router  />
       <Footer />
     </div>
   );

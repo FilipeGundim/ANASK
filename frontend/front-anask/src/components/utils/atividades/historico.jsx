@@ -33,8 +33,8 @@ class Historico extends React.Component {
     render() {
         return (
             <div style={this.cardStyle}>
-                {this.state.atividades.map(row => (
-                    <Card bg="dark" text="white" style={{ width: '18rem', margin: '15px' }}>
+                {this.state.atividades.map((row, idx) => (
+                    <Card bg="dark" text="white" style={{ width: '18rem', margin: '15px' }} key={idx}>
                         <Card.Body key={row.id}>
                             <Card.Title>{row.titulo}</Card.Title>
                             <Card.Subtitle className="mb-2 text-muted">Status (Finalizado)</Card.Subtitle>

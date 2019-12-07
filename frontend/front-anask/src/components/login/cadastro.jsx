@@ -30,7 +30,7 @@ const CadastroModel = (props) => {
     }
 
     return (
-        <Modal show={show} onHide={show} onClose={close}>
+        <Modal show={show} onClose={close}>
             <Modal.Dialog >
                 <Modal.Header closeButton onClick={close}>
                     <Modal.Title>Criar User</Modal.Title>
