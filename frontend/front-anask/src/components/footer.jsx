@@ -5,7 +5,7 @@ const Footer = () => {
         <div>
             <hr style={hrStyle} />
             <footer style={footerStyle}>
-            glowingtree | FilipeGundim <br />
+                FilipeGundim <br />
                 © - All Rights Reserveds
             </footer>
         </div>
