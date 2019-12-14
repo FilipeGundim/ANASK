@@ -1,5 +1,5 @@
 import React from 'react'
-import {Image} from 'react-bootstrap'
+import {Image, ListGroup} from 'react-bootstrap'
 import image1 from '../imagens/reat-image.jpg'
 
 
@@ -27,15 +27,15 @@ const Inicio = () => {
             <h3>Organize sua rotina e construa uma nova maneira de se organizar!</h3>
             <br/>
             <br/>          
-            <ul style = {{textAlign:"left"}}>
+            <ListGroup style = {{textAlign:"left"}} variant="flush">
             Com o projeto ANASK você pode:
                 <br/>
                 <br/>
-                <li>Criar atividades pessoais</li>
-                <li>Criar projetos</li>
-                <li>Entrar em projetos que deseja</li>
-                <li>Gerenciar todas as suas tarefas pendentes</li>
-            </ul>
+                <ListGroup.Item variant="dark">Criar atividades pessoais</ListGroup.Item>
+                <ListGroup.Item variant="dark">Criar projetos</ListGroup.Item>
+                <ListGroup.Item variant="dark">Entrar em projetos que deseja</ListGroup.Item>
+                <ListGroup.Item variant="dark">Gerenciar todas as suas tarefas pendentes</ListGroup.Item>
+            </ListGroup>
             <br />
             <br />
             <h2>Começe a ultilizar o ANASK agora mesmo e aumente seu desempenho em gegerenciar atividades!</h2>

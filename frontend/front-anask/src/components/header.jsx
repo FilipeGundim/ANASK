@@ -55,7 +55,7 @@ class Header extends React.Component {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
-                        <Nav.Item><Link to='/'>Inicio</Link></Nav.Item>
+                        <Nav.Link><Link to='/'>Inicio</Link></Nav.Link>
                         <NavDropdown title="Atividades" id="basic-nav-dropdown">
                             <NavDropdown.Item><Link to="/atividades-pendentes">Pendentes</Link><Badge variant="primary">{this.state.badgeA.length}</Badge></NavDropdown.Item>
                             <NavDropdown.Item><Link to="/historico-atividades">Histórico</Link></NavDropdown.Item>
