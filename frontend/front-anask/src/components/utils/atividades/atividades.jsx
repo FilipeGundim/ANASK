@@ -2,27 +2,18 @@ import React from 'react'
 import { Card, Button} from 'react-bootstrap'
 import axios from 'axios';
 import Modal from './editarAtividade'
+import { bindActionCreators } from 'redux';
+import { getAtividades } from '../../../reducers/atividades/atividadeAction'
 import { connect } from 'react-redux';
 
 class Atividades extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            atividades: [],
             selected: {},
             open: false
         }
-        this.getAtividade();
-    }
-
-    getAtividade() {
-        let url = `http://localhost:3001/atividades/${this.props.user_id}`
-        axios.get(url).then(res => {
-            let data = res.data
-            this.setState({
-                atividades: data.recordsets[0]
-            })
-        })
+        this.props.getAtividades(this.props.user_id);
     }
 
     finalizaAtividade(row) {
@@ -65,7 +56,7 @@ class Atividades extends React.Component {
                 <h2>Aqui estão todas suas atividades pendentes!</h2>
                 <br/>
                 <div style={this.cardStyle}>
-                {this.state.atividades.map((row, idx) => (
+                {this.props.todasAtividades.map((row, idx) => (
                     <Card bg="dark" text="white" style={{ width: '18rem', margin: '15px' }} key={idx}>
                         <Card.Body >
                             <Card.Title>{row.titulo}</Card.Title>
@@ -86,8 +77,14 @@ class Atividades extends React.Component {
         )
     }
 }
+
 const mapStateToProps = state => ({
-    user_id: state.login.user_id
+    user_id: state.login.user_id,
+    todasAtividades: state.atividades.todasAtividades
 })
 
-export default connect(mapStateToProps)(Atividades);
+function mapDipatchToProps (dispatch){
+    return bindActionCreators({getAtividades}, dispatch)
+}
+
+export default connect(mapStateToProps, mapDipatchToProps)(Atividades);

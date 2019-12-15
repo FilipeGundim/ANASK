@@ -9,21 +9,9 @@ class Header extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            badgeA: [],
             badgeP: [],
             open: false
         }
-        this.getBadgeA();
-    }
-
-    getBadgeA() {
-        let url = `http://localhost:3001/atividades/${this.props.user_id}`
-        axios.get(url).then(res => {
-            let data = res.data
-            this.setState({
-                badgeA: data.recordsets[0]
-            })
-        })
     }
 
     getBadgeP() {
@@ -57,7 +45,7 @@ class Header extends React.Component {
                     <Nav className="mr-auto">
                         <Nav.Link><Link to='/'>Inicio</Link></Nav.Link>
                         <NavDropdown title="Atividades" id="basic-nav-dropdown">
-                            <NavDropdown.Item><Link to="/atividades-pendentes">Pendentes</Link><Badge variant="primary">{this.state.badgeA.length}</Badge></NavDropdown.Item>
+                            <NavDropdown.Item><Link to="/atividades-pendentes">Pendentes</Link><Badge variant="primary">{this.props.badgeA.length}</Badge></NavDropdown.Item>
                             <NavDropdown.Item><Link to="/historico-atividades">Histórico</Link></NavDropdown.Item>
                             <NavDropdown.Divider/>
                             <NavDropdown.Item><Link to="/criar-atividade">Criar Atividade</Link></NavDropdown.Item>
@@ -84,7 +72,8 @@ class Header extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    user_id: state.login.user_id
+    user_id: state.login.user_id,
+    badgeA: state.atividades.todasAtividades
 })
 
 export default connect(mapStateToProps)(Header);

@@ -8,11 +8,9 @@ import Router from './components/utils/routes';
 function App() {
   return (
     <BrowserRouter>
-      <div className="App">
-        <Header />
-        <Router />
-        <Footer />
-      </div>
+      <Header />
+      <Router />
+      <Footer />
     </BrowserRouter>
   );
 }

@@ -1,17 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import loginReducer from './components/login/loginReducer'
-import {Provider} from 'react-redux'
-import { combineReducers, createStore } from 'redux'
-
-const reducers = combineReducers({
-    login: loginReducer
-})
+import { Provider } from 'react-redux'
+import { Store } from './store/index.js'
 
 ReactDOM.render(
-    <Provider store = {createStore(reducers)} >
+    <Provider store={Store} >
         <App />
     </Provider>
-, 
-document.getElementById('root'));
+    ,
+    document.getElementById('root'));
