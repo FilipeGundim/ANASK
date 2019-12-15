@@ -22,11 +22,7 @@ const Inicio = () => {
     return (
         <div style={divStyle}>
             <h2>Desenvolva atividades, projetos e muito mais.</h2>
-            <br/>
-            <br/>
-            <h3>Organize sua rotina e construa uma nova maneira de se organizar!</h3>
-            <br/>
-            <br/>          
+            <h3>Organize sua rotina e construa uma nova maneira de se organizar!</h3>  
             <ListGroup style = {{textAlign:"left"}} variant="flush">
             Com o projeto ANASK você pode:
                 <br/>
