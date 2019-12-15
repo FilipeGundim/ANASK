@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import loginReducer from './components/login/loginReducer'
 import {Provider} from 'react-redux'
