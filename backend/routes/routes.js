@@ -19,7 +19,7 @@ app.post('/criar-user', (req, res) => {
     request.query(`insert into usuario values ('${body.nome}', '${body.datanasc}', '${body.sexo}', '${body.email}', '${body.senha}');`,
         (err, recordset) => {
             if (err) {
-                console.log(err) 
+                console.log(err)
             }
             console.log("usuario inserido")
             res.status(200)
@@ -61,7 +61,7 @@ app.post('/cria-atividade', (req, res) => {
     res.status(200);
 })
 
-app.post('edita-atividade',(req, res)=>{
+app.post('edita-atividade', (req, res) => {
 
     let body = req.body
 
@@ -85,7 +85,7 @@ app.post('/finaliza-atividade/:atividade', (req, res) => {
             }
         })
     res.status(200);
-}) 
+})
 
 app.post('/cria-projeto', (req, res) => {
     let body = req.body

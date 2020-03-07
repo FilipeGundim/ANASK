@@ -3,8 +3,8 @@ import React from 'react'
 const Footer = () => {
     return (
         <div>
-            <hr style={hrStyle} />
-            <footer style={footerStyle}>
+            <hr className="mr-3 ml-3" />
+            <footer className="mb-2 text-center">
                 FilipeGundim <br />
                 © - All Rights Reserveds
             </footer>
@@ -13,14 +13,3 @@ const Footer = () => {
 }
 
 export default Footer;
-
-const hrStyle = {
-    marginLeft: '30%',
-    marginRight: '30%'
-}
-
-const footerStyle = {
-    justifyContent: 'center',
-    textAlign: 'center',
-    marginBottom: '20px'
-}
