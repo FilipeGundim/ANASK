@@ -3,7 +3,7 @@ import { Card, Button} from 'react-bootstrap'
 import axios from 'axios';
 import Modal from './editarAtividade'
 import { bindActionCreators } from 'redux';
-import { getAtividades } from '../../../reducers/atividades/atividadeAction'
+import { getAtividades } from '../../../redux/reducers/atividades/atividadeAction'
 import { connect } from 'react-redux';
 
 class Atividades extends React.Component {

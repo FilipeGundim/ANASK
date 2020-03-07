@@ -1,6 +1,5 @@
 import React from 'react'
 import { Image, ListGroup } from 'react-bootstrap'
-import image1 from '../imagens/reat-image.jpg'
 
 const Inicio = () => {
 
@@ -30,7 +29,7 @@ const Inicio = () => {
                 <ListGroup.Item variant="dark">Gerenciar todas as suas tarefas pendentes</ListGroup.Item>
             </ListGroup>
             <p><h2>Começe a ultilizar o ANASK agora mesmo e aumente seu desempenho em gegerenciar atividades!</h2></p>
-            <Image src={image1} style={imageStyle} rounded />
+            <Image src={'./imagens/reat-image.jpg'} style={imageStyle} rounded />
         </div>
     )
 }
