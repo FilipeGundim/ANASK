@@ -26,7 +26,6 @@ class Atividades extends React.Component {
             open: true,
             selected
         });
-
     };
 
     handleClose = () => {
@@ -34,13 +33,6 @@ class Atividades extends React.Component {
             open: false
         });
     };
-
-    divStyle = {
-        width: "900px",
-        marginLeft: "auto",
-        marginRight: "auto",
-        justifyContent: "center"
-    }
 
     cardStyle = {
         display: 'flex',
@@ -52,7 +44,7 @@ class Atividades extends React.Component {
 
     render() {
         return (
-            <div style={this.divStyle}>
+            <div className="w-75 mr-auto ml-auto justify-content-center">
                 <h2>Aqui estão todas suas atividades pendentes!</h2>
                 <br/>
                 <div style={this.cardStyle}>
