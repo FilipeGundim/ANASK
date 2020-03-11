@@ -5,9 +5,8 @@ import axios from 'axios'
 
 const CadastroModel = (props) => {
 
-    let show = props.show;
-    let close = props.close;
-
+    let { show, close } = props;
+    
     const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');

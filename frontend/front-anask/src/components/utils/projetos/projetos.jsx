@@ -24,23 +24,15 @@ class Projetos extends React.Component {
 
     inserirUserProjeto(row) {
         let url = `http://localhost:3001/usuario-projeto/${this.props.user_id}/${row.id}`
-        console.log(row)
         axios.post(url).then(res => {
             console.log(res.status)
         })
     }
 
-    inputStyle = {
-        width: "600px",
-        marginLeft: "auto",
-        marginRight: "auto",
-        justifyContent: "center"
-    }
-
     render() {
         return (
             <div>
-                <FormControl type="text" placeholder="Procurar projetos" className="mt-2 mb-2" style={this.inputStyle} onChange={(e) => { this.getProjetos(e.target.value) }} />
+                <FormControl type="text" placeholder="Procurar projetos" className="mt-2 mb-2 w-50 mr-auto ml-auto justify-content-center" onChange={(e) => { this.getProjetos(e.target.value) }} />
                 {
                     this.state.projetos.map((row, idx) => (
                         <Jumbotron fluid key={idx}>

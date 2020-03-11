@@ -14,13 +14,6 @@ class ProjetoForm extends React.Component {
         }
     }
 
-    formStyle = {
-        justifyContent: 'center',
-        width: '600px',
-        marginLeft: 'auto',
-        marginRight: 'auto'
-    }
-
     postProjeto() {
         let url = "http://localhost:3001/cria-projeto"
         let body = this.state
@@ -33,7 +26,7 @@ class ProjetoForm extends React.Component {
 
     render() {
         return (
-            <div style={this.formStyle}>
+            <div  className="w-50 justify-content-center mr-auto ml-auto">
                 <Form>
                     <Form.Group >
                         <Form.Label>Titulo</Form.Label>

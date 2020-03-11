@@ -5,9 +5,7 @@ import axios from 'axios'
 
 const AtividadeModal = (props) => {
 
-    let show = props.show;
-    let close = props.close;
-    let atividade = props.atividade;
+    let {show, close, atividade } = props;
 
     const [titulo, setTitulo] = useState('')
     const [descricao, setDescricao] = useState('')

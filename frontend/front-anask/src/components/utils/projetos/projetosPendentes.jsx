@@ -24,13 +24,6 @@ class Atividades extends React.Component {
         })
     }
 
-    divStyle = {
-        width: "900px",
-        marginLeft: "auto",
-        marginRight: "auto",
-        justifyContent: "center"
-    }
-
     cardStyle = {
         display: 'flex',
         flexDirection: 'row',
@@ -40,7 +33,7 @@ class Atividades extends React.Component {
 
     render() {
         return (
-            <div style={this.divStyle}>
+            <div className="w-75 justify-content-center mr-auto ml-auto">
                 <h2>Projetos!</h2>
                 <br />
                 <div style={this.cardStyle}>

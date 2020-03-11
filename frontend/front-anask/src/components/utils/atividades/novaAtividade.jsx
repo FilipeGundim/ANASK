@@ -14,17 +14,9 @@ class atividadeForm extends React.Component {
         }
     }
 
-    formStyle = {
-        justifyContent: 'center',
-        width: '600px',
-        marginLeft: 'auto',
-        marginRight: 'auto'
-    }
-
     postAtividade() {
         let url = "http://localhost:3001/cria-atividade"
         let body = this.state
-        console.log(body)
         axios.post(url, body).then(
             alert("Ativiade criada com succeso!")
         ).catch(
@@ -34,7 +26,7 @@ class atividadeForm extends React.Component {
 
     render() {
         return (
-            <div style={this.formStyle}>
+            <div className="w-50 justify-content-center mr-auto ml-auto">
                 <Form>
                     <Form.Group >
                         <Form.Label>Titulo</Form.Label>
