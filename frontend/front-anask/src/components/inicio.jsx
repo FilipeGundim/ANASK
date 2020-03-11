@@ -3,22 +3,8 @@ import { Image, ListGroup } from 'react-bootstrap'
 
 const Inicio = () => {
 
-    let divStyle = {
-        justifyContent: "center",
-        textAlign: "center",
-        width: "900px",
-        marginLeft: "auto",
-        marginRight: "auto"
-    }
-
-    let imageStyle = {
-        width: "800px",
-        height: "350px",
-        boderRadius: "20px"
-    }
-
     return (
-        <div style={divStyle}>
+        <div className="text-center w-50 ml-auto mr-auto justify-content-center">
             <h2>Desenvolva atividades, projetos e muito mais.</h2>
             <h3>Organize sua rotina e construa uma nova maneira de se organizar!</h3>
             <ListGroup className="text-left" variant="flush">
@@ -29,7 +15,7 @@ const Inicio = () => {
                 <ListGroup.Item variant="dark">Gerenciar todas as suas tarefas pendentes</ListGroup.Item>
             </ListGroup>
             <p><h2>Começe a ultilizar o ANASK agora mesmo e aumente seu desempenho em gegerenciar atividades!</h2></p>
-            <Image src={'./imagens/reat-image.jpg'} style={imageStyle} rounded />
+            <Image src={'./imagens/reat-image.jpg'} className="w-75 " rounded />
         </div>
     )
 }
