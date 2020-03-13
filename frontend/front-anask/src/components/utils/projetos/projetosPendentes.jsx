@@ -1,5 +1,5 @@
 import React from 'react'
-import {  Container } from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import axios from 'axios';
 import { connect } from 'react-redux';
@@ -13,31 +13,24 @@ class Atividades extends React.Component {
         this.getProjetos();
     }
 
-    getProjetos() {
-        let url = `http://localhost:3001/projeto/${this.props.user_id}`
-        axios.get(url).then(res => {
-            let data = res.data
-            console.log(data)
-            this.setState({
-                projetos: data.recordsets[0]
-            })
+    async getProjetos() {
+        const { user_id } = this.props
+        let url = `http://localhost:3001/projeto/${user_id}`
+        const res = await axios.get(url)
+        const data = res.data
+        this.setState({
+            projetos: data.recordsets[0]
         })
     }
 
-    cardStyle = {
-        display: 'flex',
-        flexDirection: 'row',
-        padding: '10px',
-        justifyContent: 'center'
-    }
-
     render() {
+        const { projetos } = this.state
         return (
             <div className="w-75 justify-content-center mr-auto ml-auto">
                 <h2>Projetos!</h2>
                 <br />
-                <div style={this.cardStyle}>
-                    {this.state.projetos.map((row, idx) => (
+                <div className="d-flex flex-row p-2 justify-content-center">
+                    {projetos.map((row, idx) => (
                         <Jumbotron fluid key={idx}>
                             <Container>
                                 <h1>{row.titulo}</h1>

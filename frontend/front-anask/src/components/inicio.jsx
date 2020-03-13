@@ -5,8 +5,8 @@ const Inicio = () => {
 
     return (
         <div className="text-center w-50 ml-auto mr-auto justify-content-center">
-            <h2>Desenvolva atividades, projetos e muito mais.</h2>
-            <h3>Organize sua rotina e construa uma nova maneira de se organizar!</h3>
+            <p className="h3">Desenvolva atividades, projetos e muito mais.</p>
+            <p className="h4">Organize sua rotina e construa uma nova maneira de se organizar!</p>
             <ListGroup className="text-left" variant="flush">
                 <p>Com o projeto ANASK você pode:</p>
                 <ListGroup.Item variant="dark">Criar atividades pessoais</ListGroup.Item>
@@ -14,8 +14,8 @@ const Inicio = () => {
                 <ListGroup.Item variant="dark">Entrar em projetos que deseja</ListGroup.Item>
                 <ListGroup.Item variant="dark">Gerenciar todas as suas tarefas pendentes</ListGroup.Item>
             </ListGroup>
-            <p><h2>Começe a ultilizar o ANASK agora mesmo e aumente seu desempenho em gegerenciar atividades!</h2></p>
-            <Image src={'./imagens/reat-image.jpg'} className="w-75 " rounded />
+            <p className="h3">Começe a ultilizar o ANASK agora mesmo e aumente seu desempenho em gegerenciar atividades!</p>
+            <Image src={'./imagens/reat-image.jpg'} className="w-75" rounded />
         </div>
     )
 }

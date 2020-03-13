@@ -5,8 +5,8 @@ const Footer = () => {
         <div>
             <hr className="mr-3 ml-3" />
             <footer className="mb-2 text-center">
-                FilipeGundim <br />
-                © - All Rights Reserveds
+              <strong>FilipeGundim<br/>
+                © - All Rights Reserveds</strong> 
             </footer>
         </div>
     )

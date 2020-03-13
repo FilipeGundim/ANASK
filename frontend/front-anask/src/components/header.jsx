@@ -14,14 +14,13 @@ class Header extends React.Component {
         }
     }
 
-    getBadgeP() {
+    async getBadgeP() {
         const { user_id } = this.props
         let url = `http://localhost:3001/atividades/${user_id}`
-        axios.get(url).then(res => {
-            let data = res.data
-            this.setState({
-                badgeP: data.recordsets[0]
-            })
+        const res = await axios.get(url)
+        const data = res.data
+        this.setState({
+            badgeP: data.recordsets[0]
         })
     }
 
