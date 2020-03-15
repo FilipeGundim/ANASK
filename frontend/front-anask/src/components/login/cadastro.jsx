@@ -3,10 +3,8 @@ import Modal from 'react-bootstrap/Modal'
 import { Button, Form, FormControl } from 'react-bootstrap'
 import axios from 'axios'
 
-const CadastroModel = (props) => {
+const CadastroModel = ({ show, close }) => {
 
-    let { show, close } = props;
-    
     const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
