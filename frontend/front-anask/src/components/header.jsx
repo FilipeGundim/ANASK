@@ -15,8 +15,7 @@ class Header extends React.Component {
     }
 
     async getBadgeP() {
-        const { user_id } = this.props
-        let url = `http://localhost:3001/atividades/${user_id}`
+        let url = `http://localhost:3001/atividades/${this.props.user_id}`
         const res = await axios.get(url)
         const data = res.data
         this.setState({
@@ -43,18 +42,18 @@ class Header extends React.Component {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
-                        <Nav.Link><Link to='/'>Inicio</Link></Nav.Link>
+                        <Nav.Link as={Link} to='/'>Inicio</Nav.Link>
                         <NavDropdown title="Atividades" id="basic-nav-dropdown">
-                            <NavDropdown.Item><Link to="/atividades-pendentes">Pendentes</Link><Badge variant="primary">{this.props.todasAtividades.length}</Badge></NavDropdown.Item>
-                            <NavDropdown.Item><Link to="/historico-atividades">Histórico</Link></NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to="/atividades-pendentes">Pendentes<Badge variant="primary">{this.props.todasAtividades.length}</Badge></NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to="/historico-atividades">Histórico</NavDropdown.Item>
                             <NavDropdown.Divider />
-                            <NavDropdown.Item><Link to="/criar-atividade">Criar Atividade</Link></NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to="/criar-atividade">Criar Atividade</NavDropdown.Item>
                         </NavDropdown>
                         <NavDropdown title="Projetos" id="basic-nav-dropdown">
-                            <NavDropdown.Item><Link to="/projetos-pendentes">Pendentes</Link><Badge variant="primary">{this.state.badgeP.length}</Badge></NavDropdown.Item>
-                            <NavDropdown.Item><Link to="/historico-projetos">Histórico</Link></NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to="/projetos-pendentes">Pendentes<Badge variant="primary">{this.state.badgeP.length}</Badge></NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to="/historico-projetos">Histórico</NavDropdown.Item>
                             <NavDropdown.Divider />
-                            <NavDropdown.Item><Link to="/criar-projeto">Criar Projeto</Link></NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to="/criar-projeto">Criar Projeto</NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
                     <ButtonGroup aria-label="Basic example" className="mr-2">

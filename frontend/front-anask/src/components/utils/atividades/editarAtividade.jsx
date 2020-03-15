@@ -26,7 +26,7 @@ const AtividadeModal = ({ show, close, atividade }) => {
     }
 
     return (
-        <Modal show={show} onHide={show} onClose={close}>
+        <Modal show={show} onClose={close}>
             <Modal.Dialog >
                 <Modal.Header closeButton onClick={close}>
                     <Modal.Title>Editar Atividade: {atividade.titulo}</Modal.Title>

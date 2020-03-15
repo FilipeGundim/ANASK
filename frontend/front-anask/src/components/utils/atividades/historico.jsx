@@ -13,7 +13,8 @@ class Historico extends React.Component {
     }
 
     async getTodasAtividades() {
-        let url = `http://localhost:3001/todas-atividades/${this.props.user_id}`
+        const { user_id } = this.props
+        let url = `http://localhost:3001/todas-atividades/${user_id}`
         const res = await axios.get(url)
         const data = res.data
         this.setState({

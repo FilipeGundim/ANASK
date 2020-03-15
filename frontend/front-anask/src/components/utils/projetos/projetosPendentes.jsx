@@ -33,9 +33,9 @@ class Atividades extends React.Component {
                     {projetos.map((row, idx) => (
                         <Jumbotron fluid key={idx}>
                             <Container>
-                                <h1>{row.titulo}</h1>
-                                <h2>{row.descricao}</h2>
-                                <p>
+                                <p className="h1">{row.titulo}</p>
+                                <p className="h2">{row.descricao}</p>
+                                <p className="h3">
                                     começo: {row.data_ini.replace("T00:00:00.000Z", "")}
                                     <br />
                                     fim: {row.data_fim.replace("T00:00:00.000Z", "")}
