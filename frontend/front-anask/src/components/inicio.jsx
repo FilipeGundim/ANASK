@@ -8,7 +8,7 @@ const Inicio = () => {
             <p className="h3">Desenvolva atividades, projetos e muito mais.</p>
             <p className="h4">Organize sua rotina e construa uma nova maneira de se organizar!</p>
             <ListGroup className="text-left" variant="flush">
-                <p>Com o projeto ANASK você pode:</p>
+                <p className="h">Com o projeto ANASK você pode:</p>
                 <ListGroup.Item variant="dark">Criar atividades pessoais</ListGroup.Item>
                 <ListGroup.Item variant="dark">Criar projetos</ListGroup.Item>
                 <ListGroup.Item variant="dark">Entrar em projetos que deseja</ListGroup.Item>

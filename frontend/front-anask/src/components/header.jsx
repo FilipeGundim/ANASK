@@ -61,7 +61,7 @@ class Header extends React.Component {
                         <Button variant="secondary" onClick={() => { this.cadastroOpen() }}>Cadastrar</Button>
                     </ButtonGroup>
                     <Form inline>
-                        <Button variant="outline-success"><Link to="/busca-projetos">Projetos no ANASK</Link></Button>
+                        <Button variant="outline-success" as={Link} to="/busca-projetos">Projetos no ANASK</Button>
                     </Form>
                 </Navbar.Collapse>
                 <CadastroModel show={this.state.open} close={() => { this.cadastroClose() }} />

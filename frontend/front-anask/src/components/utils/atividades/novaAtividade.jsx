@@ -27,7 +27,7 @@ class atividadeForm extends React.Component {
     render() {
         return (
             <div className="w-50 justify-content-center mr-auto ml-auto">
-                <Form>
+                <Form as="div">
                     <Form.Group >
                         <Form.Label>Titulo</Form.Label>
                         <Form.Control type="text" placeholder="Titulo da sua nova atividade!" onChange={(e) => { this.setState({ titulo: e.target.value }) }} />

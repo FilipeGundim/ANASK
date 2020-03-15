@@ -27,7 +27,7 @@ const CadastroModel = ({ show, close }) => {
     }
 
     return (
-        <Modal show={show} onClose={close}>
+        <Modal show={show} onClose={close} onHide={close}>
             <Modal.Dialog >
                 <Modal.Header closeButton onClick={close}>
                     <Modal.Title>Criar User</Modal.Title>
