@@ -12,8 +12,8 @@ const CadastroModel = ({ show, close }) => {
     const [datanasc, setDatanasc] = useState('')
 
     function criaUser() {
-        let url = "http://localhost:3001/criar-user"
-        let user = {
+        const url = "http://localhost:3001/criar-user"
+        const user = {
             nome,
             email,
             senha,

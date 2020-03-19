@@ -23,12 +23,6 @@ class Header extends React.Component {
         })
     }
 
-    cadastroOpen() {
-        this.setState({
-            open: true
-        })
-    }
-
     cadastroClose() {
         this.setState({
             open: false
@@ -58,7 +52,7 @@ class Header extends React.Component {
                     </Nav>
                     <ButtonGroup aria-label="Basic example" className="mr-2">
                         <Button variant="secondary">Log-in</Button>
-                        <Button variant="secondary" onClick={() => { this.cadastroOpen() }}>Cadastrar</Button>
+                        <Button variant="secondary" onClick={() => { this.setState({ open: true }) }}>Cadastrar</Button>
                     </ButtonGroup>
                     <Form inline>
                         <Button variant="outline-success" as={Link} to="/busca-projetos">Projetos no ANASK</Button>

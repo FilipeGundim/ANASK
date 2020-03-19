@@ -15,8 +15,8 @@ app.use(cors);
 app.use(bodyParser.json())
 
 app.post('/criar-user', (req, res) => {
-    let body = req.body
-    request.query(`insert into usuario values ('${body.nome}', '${body.datanasc}', '${body.sexo}', '${body.email}', '${body.senha}');`,
+    const { nome, datanasc, sexo, email, senha } = req.body
+    request.query(`insert into usuario values ('${nome}', '${datanasc}', '${sexo}', '${email}', '${senha}');`,
         (err, recordset) => {
             if (err) {
                 console.log(err)
@@ -49,9 +49,9 @@ app.get('/todas-atividades/:id', (req, res) => {
 })
 
 app.post('/cria-atividade', (req, res) => {
-    let body = req.body
-    request.query(`INSERT INTO usuario_atividade VALUES ('${body.titulo}', '${body.descricao}', '${body.data_ini}', 
-    '${body.data_fim}', 1, '${body.responsavel}')`,
+    const { titulo, descricao, data_ini, data_fim, responsavel } = req.body
+    request.query(`INSERT INTO usuario_atividade VALUES ('${titulo}', '${descricao}', '${data_ini}', 
+    '${data_fim}', 1, '${responsavel}')`,
         (err, recordset) => {
             if (err) {
                 console.log(err)
@@ -62,11 +62,9 @@ app.post('/cria-atividade', (req, res) => {
 })
 
 app.post('edita-atividade', (req, res) => {
-
-    let body = req.body
-
-    request.query(`UPDATE usuario_atividade SET titulo = '${body.titulo}', descricao ='${body.descricao}', data_ini= '${body.data_ini}', 
-     data_fim = '${body.data_fim}' WHERE id = ${body.atividade}`,
+    const { titulo, descricao, data_ini, data_fim, atividade } = req.body
+    request.query(`UPDATE usuario_atividade SET titulo = '${titulo}', descricao ='${descricao}', data_ini= '${data_ini}', 
+     data_fim = '${data_fim}' WHERE id = ${atividade}`,
         (err, recordset) => {
             if (err) {
                 console.log(err)
@@ -88,10 +86,9 @@ app.post('/finaliza-atividade/:atividade', (req, res) => {
 })
 
 app.post('/cria-projeto', (req, res) => {
-    let body = req.body
+    const { titulo, descricao, data_ini, data_fim, responsavel } = req.body
     request.query(`INSERT INTO projeto VALUES 
-    ('${body.titulo}', '${body.descricao}', '${body.data_ini}', 
-    '${body.data_fim}','${body.responsavel}', 1, '${body.responsavel}')`,
+    ('${titulo}', '${descricao}', '${data_ini}','${data_fim}','${responsavel}', 1, '${responsavel}')`,
         (err, recordset) => {
             if (err) {
                 console.log(err)
@@ -101,8 +98,7 @@ app.post('/cria-projeto', (req, res) => {
 })
 
 app.post('/usuario-projeto/:id/:projeto', (req, res) => {
-    let id = req.params.id
-    let projeto = req.params.projeto
+    const { id, projeto } = req.params
     request.query(`INSERT INTO usuario_projeto VALUES(${id}, ${projeto}, ${id})`, (err, recordset) => {
         if (err) {
             console.log(err)
