@@ -13,6 +13,7 @@ const config = {
 
 app.use(cors);
 app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
 
 app.post('/criar-user', (req, res) => {
     const { nome, datanasc, sexo, email, senha } = req.body
@@ -27,7 +28,7 @@ app.post('/criar-user', (req, res) => {
 })
 
 app.get('/atividades/:id', (req, res) => {
-    let id = req.params.id
+    const { id } = req.params
     request.query(`SELECT * FROM usuario_atividade WHERE id_usuario = ${id} and status = 1 ;`,
         (err, recordset) => {
             if (err) {
@@ -38,7 +39,7 @@ app.get('/atividades/:id', (req, res) => {
 })
 
 app.get('/todas-atividades/:id', (req, res) => {
-    let id = req.params.id
+    const { id } = req.params
     request.query(`SELECT * FROM usuario_atividade WHERE id_usuario = ${id} and status =0;`,
         (err, recordset) => {
             if (err) {
@@ -75,7 +76,7 @@ app.post('edita-atividade', (req, res) => {
 })
 
 app.post('/finaliza-atividade/:atividade', (req, res) => {
-    let atividade = req.params.atividade
+    const { atividade } = req.params
     request.query(`UPDATE usuario_atividade SET status = 0  WHERE id = ${atividade}`,
         (err, recordset) => {
             if (err) {
@@ -108,7 +109,7 @@ app.post('/usuario-projeto/:id/:projeto', (req, res) => {
 })
 
 app.get('/projeto/:id', (req, res) => {
-    let id = req.params.id
+    const { id } = req.params
     request.query(`SELECT * FROM projeto AS p
     INNER JOIN usuario_projeto AS up
     ON p.id = up.projeto_id
@@ -123,8 +124,7 @@ app.get('/projeto/:id', (req, res) => {
 
 
 app.get('/projetos/:filtro', (req, res) => {
-    let filtro = req.params.filtro
-
+    const { filtro } = req.params
     request.query(`SELECT * FROM projeto WHERE titulo LIKE '%${filtro}%'`,
         (err, recordset) => {
             if (err) {

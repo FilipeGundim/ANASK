@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Modal from 'react-bootstrap/Modal'
 import { Button, Form, FormControl, Col } from 'react-bootstrap'
 import axios from 'axios'
@@ -24,6 +24,15 @@ const AtividadeModal = ({ show, close, atividade }) => {
             alert(res.status)
         })
     }
+
+    useEffect(()=>{
+        return ()=>{
+            setTitulo('');
+            setDescricao('');
+            setData_fim(0);
+            setData_ini(0);
+        }
+    }, [show, close, atividade])
 
     return (
         <Modal show={show} onClose={close}>

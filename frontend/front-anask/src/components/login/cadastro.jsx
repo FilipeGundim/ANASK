@@ -10,8 +10,6 @@ const CadastroModel = ({ show, close }) => {
     const [sexo, setSexo] = useState('');
     const [datanasc, setDatanasc] = useState(Date)
 
-    console.log(nome, email, senha, sexo, datanasc)
-
     function criaUser() {
         const url = "http://localhost:3001/criar-user"
         const user = {

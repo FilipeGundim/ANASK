@@ -13,6 +13,9 @@ class Atividades extends React.Component {
             selected: {},
             open: false
         }
+    }
+
+    componentDidMount() {
         this.props.getAtividades(this.props.user_id);
     }
 
@@ -35,11 +38,12 @@ class Atividades extends React.Component {
     };
 
     render() {
+        const { todasAtividades } = this.props
         return (
             <div className="w-75 mr-auto ml-auto justify-content-center text-center">
                 <p className="h3"> Aqui estão todas suas atividades pendentes!</p>
                 <div className="d-flex justify-content-center flex-wrap p-2">
-                    {this.props.todasAtividades.map((row, idx) => (
+                    {todasAtividades.map((row, idx) => (
                         <Card bg="dark" text="white" style={{ width: '18rem', margin: '15px' }} key={idx}>
                             <Card.Body >
                                 <Card.Title>{row.titulo}</Card.Title>

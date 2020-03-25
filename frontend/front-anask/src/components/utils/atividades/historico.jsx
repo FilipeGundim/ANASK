@@ -22,6 +22,12 @@ class Historico extends React.Component {
         })
     }
 
+    componentWillUnmount(){
+        this.setState({
+            atividades: []
+        })
+    }
+
     render() {
         const { atividades } = this.state
         return (
