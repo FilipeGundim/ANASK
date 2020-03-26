@@ -39,9 +39,7 @@ class Historico extends React.Component {
                             <Card.Body key={row.id}>
                                 <Card.Title>{row.titulo}</Card.Title>
                                 <Card.Subtitle className="mb-2 text-muted">Status (Finalizado)</Card.Subtitle>
-                                <Card.Text>
-                                    {row.descricao}
-                                </Card.Text>
+                                <Card.Text>{row.descricao}</Card.Text>
                             </Card.Body>
                         </Card>
                     ))}

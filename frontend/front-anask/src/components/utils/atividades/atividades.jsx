@@ -48,9 +48,7 @@ class Atividades extends React.Component {
                             <Card.Body >
                                 <Card.Title>{row.titulo}</Card.Title>
                                 <Card.Subtitle className="mb-2 text-muted">Status (Pendente)</Card.Subtitle>
-                                <Card.Text>
-                                    {row.descricao}
-                                </Card.Text>
+                                <Card.Text>{row.descricao}</Card.Text>
                                 <Button className="mt-1 mr-1" variant="primary" type="submit" onClick={() => { this.handleOpen(row) }}>
                                     Editar atividade
                                 </Button>
