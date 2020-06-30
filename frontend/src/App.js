@@ -1,9 +1,9 @@
 import React from 'react';
-import Header from './components/header'
-import Footer from './components/footer'
+import Header from './containers/header'
+import Footer from './containers/footer'
 import { BrowserRouter } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Router from './components/utils/routes';
+import Router from './containers/routes';
 
 function App() {
   return (

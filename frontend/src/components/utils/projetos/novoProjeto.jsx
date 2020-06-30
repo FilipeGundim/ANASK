@@ -20,7 +20,7 @@ const ProjetoForm = ({ user }) => {
     const postProjeto = () => {
         let url = "http://localhost:10001/new-projeto"
         axios.post(url, projeto).then(
-            alert("Ativiade criada com succeso!")
+            alert("Projeto criado com succeso!")
         ).catch((err) => {
             alert(err)
         })
@@ -28,7 +28,10 @@ const ProjetoForm = ({ user }) => {
 
     useEffect(() => {
         if (user) {
-            setProjeto({...projeto, usuario: user })
+            setProjeto(preState => ({
+                ...preState,
+                usuario: user
+            }))
         }
     }, [user])
 

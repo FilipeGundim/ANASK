@@ -27,7 +27,10 @@ const AtividadeForm = ({ user }) => {
 
     useEffect(() => {
         if (user) {
-            setAtividade({ ...atividade, usuario: user })
+            setAtividade(prevState => ({
+                ...prevState,
+                user: user
+            }))
         }
     }, [user])
 
