@@ -4,8 +4,13 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import CadastroModel from '../components/login/cadastro'
 import LoginModel from '../components/login/login'
+import { IUser } from '../models/models';
 
-const Header = ({ user }) => {
+interface  IHeaderProps {
+    user: IUser;
+}
+
+const Header = ({ user } :IHeaderProps) => {
     const [logged, setLogged] = useState(false);
     const [open, setOpen] = useState(false);
     const [loginWindow, setLoginWindow] = useState(false);

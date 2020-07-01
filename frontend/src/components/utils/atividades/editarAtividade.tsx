@@ -2,21 +2,22 @@ import React, { useState, useEffect } from 'react'
 import Modal from 'react-bootstrap/Modal'
 import { Button, Form, FormControl, Col } from 'react-bootstrap'
 import axios from 'axios'
+import { IAtividade } from '../../../models/models';
 
-const AtividadeModal = ({ show, close, atividade }) => {
+interface IAtividadeModal {
+    show: boolean;
+    close: () => void;
+    atividade: IAtividade;
+}
 
-    const [titulo, setTitulo] = useState('')
-    const [descricao, setDescricao] = useState('')
-    const [data_ini, setData_ini] = useState(0)
-    const [data_fim, setData_fim] = useState(0)
+const AtividadeModal = ({ show, close, atividade }: IAtividadeModal) => {
+
+    const [editedAtividade, setAtividade] = useState<IAtividade>()
 
     function editaAtividade() {
         let url = "http://localhost:3001/edita-atividade"
         let objeto = {
-            titulo,
-            descricao,
-            data_ini,
-            data_fim,
+            ...editedAtividade,
             atividade: atividade.id
         }
 
@@ -25,33 +26,30 @@ const AtividadeModal = ({ show, close, atividade }) => {
         })
     }
 
-    useEffect(()=>{
-        return ()=>{
-            setTitulo('');
-            setDescricao('');
-            setData_fim(0);
-            setData_ini(0);
+    useEffect(() => {
+        return () => {
+            setAtividade({} as IAtividade)
         }
-    }, [show, close, atividade])
+    }, [atividade])
 
     return (
-        <Modal show={show} onClose={close}>
+        <Modal show={show} onHide={close}>
             <Modal.Dialog >
                 <Modal.Header closeButton onClick={close}>
                     <Modal.Title>Editar Atividade: {atividade.titulo}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <FormControl type="text" placeholder="Titulo da atividade" className="mt-2 mb-2"
-                        onChange={(e) => { setTitulo(e.target.value) }} />
+                        onChange={(e) => { setAtividade({ ...editedAtividade, titulo: e.target.value }) }} />
                     <FormControl type="text" placeholder="Desrição da atividade" className="mt-2 mb-2"
-                        onChange={(e) => { setDescricao(e.target.value) }} />
+                        onChange={(e) => { setAtividade({ ...editedAtividade, descricao: e.target.value }) }} />
                     <Form>
                         <Form.Row>
                             <Col>
-                                <Form.Control type="date" onChange={(e) => { setData_ini(e.target.value) }} />
+                                <Form.Control type="date" onChange={(e) => { setAtividade({ ...editedAtividade, data_ini: e.target.value }) }} />
                             </Col>
                             <Col>
-                                <Form.Control type="date" onChange={(e) => { setData_fim(e.target.value) }} />
+                                <Form.Control type="date" onChange={(e) => { setAtividade({ ...editedAtividade, data_fim: e.target.value }) }} />
                             </Col>
                         </Form.Row>
                     </Form>

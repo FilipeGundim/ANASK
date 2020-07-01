@@ -3,23 +3,19 @@ import { Col, Button, Form } from 'react-bootstrap';
 import axios from 'axios'
 import { connect } from 'react-redux';
 import { useEffect } from 'react';
+import { IUser, IProjeto } from '../../../models/models';
 
-const initalData = {
-    titulo: '',
-    descricao: '',
-    data_ini: '',
-    data_fim: '',
-    status: 1,
-    usuario: {}
+interface IProjetoFormProps {
+    user: IUser;
 }
 
-const ProjetoForm = ({ user }) => {
+const ProjetoForm = ({ user }: IProjetoFormProps) => {
 
-    const [projeto, setProjeto] = useState(initalData);
+    const [projeto, setProjeto] = useState<IProjeto>();
 
     const postProjeto = () => {
         let url = "http://localhost:10001/new-projeto"
-        axios.post(url, projeto).then(
+        axios.post(url, projeto).then(() =>
             alert("Projeto criado com succeso!")
         ).catch((err) => {
             alert(err)
@@ -28,8 +24,8 @@ const ProjetoForm = ({ user }) => {
 
     useEffect(() => {
         if (user) {
-            setProjeto(preState => ({
-                ...preState,
+            setProjeto(prevState => ({
+                ...prevState,
                 usuario: user
             }))
         }

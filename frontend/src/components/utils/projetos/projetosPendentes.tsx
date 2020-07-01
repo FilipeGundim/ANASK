@@ -3,10 +3,15 @@ import { Container } from 'react-bootstrap'
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import axios from 'axios';
 import { connect } from 'react-redux';
+import { IUser, IProjeto } from '../../../models/models';
 
-const Projetos = ({ user }) => {
+interface IProjetosProps {
+    user: IUser;
+}
 
-    const [projetos, setProjetos] = useState([])
+const Projetos = ({ user }: IProjetosProps) => {
+
+    const [projetos, setProjetos] = useState<IProjeto[]>()
 
     const getProjetos = async () => {
         let url = `http://localhost:10001/user-projetos/${user.id}`

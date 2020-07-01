@@ -3,19 +3,24 @@ import { FormControl, Button, Container } from 'react-bootstrap'
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import axios from 'axios'
 import { connect } from 'react-redux';
+import { IUser, IProjeto } from '../../../models/models';
 
-const Projetos = ({ user }) => {
+interface IProjetosProps {
+    user: IUser;
+}
 
-    const [projetos, setProjetos] = useState([])
+const Projetos = ({ user }: IProjetosProps) => {
 
-    const getProjetos = async (filtro) => {
+    const [projetos, setProjetos] = useState<IProjeto[]>()
+
+    const getProjetos = async (filtro: string) => {
         let url = `http://localhost:10001/get-projetos/${filtro}`
         const res = await axios.get(url)
         console.log("projetos", res.data)
         setProjetos(res.data)
     }
 
-    const inserirUserProjeto = (row) => {
+    const inserirUserProjeto = (row: IProjeto) => {
         let url = `http://localhost:10001/ingressar-projeto/${user.id}/${row.id}`
         axios.post(url)
     }

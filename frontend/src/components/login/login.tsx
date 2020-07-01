@@ -5,17 +5,24 @@ import { loGin } from '../../redux/reducers/login/loginAction'
 import { Button, FormControl } from 'react-bootstrap'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { IUser } from '../../models/models'
 
-const Login = (props) => {
+interface ILoginProps {
+    open: boolean;
+    close: () => void;
+    logged: () => void;
+    loGin: (data: any) => void;
+}
 
-    const { open, close, logged } = props
-    const [user, setUser] = useState({ email: '', senha: '' })
+const Login = ({ open, close, logged, loGin }: ILoginProps) => {
+
+    const [user, setUser] = useState<IUser>()
 
     const login = async () => {
         const { email, senha } = user
         const url = `http://localhost:10001//login/${email}/${senha}`
         const { data } = await axios.get(url)
-        props.loGin(data)
+        loGin(data)
         if (data.id) {
             logged()
         }
@@ -23,7 +30,7 @@ const Login = (props) => {
     }
 
     return (
-        <Modal show={open} onClose={close} onHide={close} size="sm">
+        <Modal show={open} onHide={close} size="sm">
             <Modal.Dialog>
                 <Modal.Header closeButton onClick={close}>
                     <Modal.Title>Faça seu log-in</Modal.Title>

@@ -3,24 +3,20 @@ import { Col, Button, Form } from 'react-bootstrap';
 import axios from 'axios'
 import { connect } from 'react-redux';
 import { useEffect } from 'react';
+import { IUser, IAtividade } from '../../../models/models';
 
-const initalData = {
-    titulo: '',
-    descricao: '',
-    data_ini: '',
-    data_fim: '',
-    status: 1,
-    usuario: {}
+interface IAtividadeFormProps {
+    user: IUser;
 }
 
-const AtividadeForm = ({ user }) => {
+const AtividadeForm = ({ user }:IAtividadeFormProps) => {
 
-    const [atividade, setAtividade] = useState(initalData);
+    const [atividade, setAtividade] = useState<IAtividade>();
 
     const postAtividade = () => {
         let url = "http://localhost:10001/new-atividade"
         console.log(atividade)
-        axios.post(url, atividade).then(
+        axios.post(url, atividade).then(() =>
             alert("Ativiade criada com succeso!")
         ).catch((e) => alert(e))
     }

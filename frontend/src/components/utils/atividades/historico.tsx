@@ -2,10 +2,15 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux';
 import { Card } from 'react-bootstrap'
+import { IUser, IAtividade } from '../../../models/models';
 
-const Historico = ({ user }) => {
+interface IHistoricoProps {
+    user: IUser;
+}
 
-    const [atividades, setAtividades] = useState([]);
+const Historico = ({ user }: IHistoricoProps) => {
+
+    const [atividades, setAtividades] = useState<IAtividade[]>();
 
     useEffect(() => {
         const getTodasAtividades = async () => {

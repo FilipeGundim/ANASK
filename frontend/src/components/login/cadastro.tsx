@@ -2,17 +2,15 @@ import React, { useState, useEffect } from 'react'
 import Modal from 'react-bootstrap/Modal'
 import { Button, Form, FormControl } from 'react-bootstrap'
 import axios from 'axios'
+import { IUser } from '../../models/models'
 
-const initalUser = {
-    nome: '',
-    email: '',
-    senha: '',
-    sexo: '',
-    datanasc: Date
+interface ICadastroModelProps {
+    show: boolean;
+    close: () => void;
 }
 
-const CadastroModel = ({ show, close }) => {
-    const [user, setUser] = useState(initalUser);
+const CadastroModel = ({ show, close }: ICadastroModelProps) => {
+    const [user, setUser] = useState<IUser>();
 
     const criaUser = () => {
         const url = "http://localhost:10001/new-user"
@@ -24,12 +22,12 @@ const CadastroModel = ({ show, close }) => {
 
     useEffect(() => {
         return () => {
-            setUser(initalUser);
+            setUser({} as IUser);
         }
     }, [show, close])
 
     return (
-        <Modal show={show} onClose={close} onHide={close} size="sm">
+        <Modal show={show} onHide={close} size="sm">
             <Modal.Dialog>
                 <Modal.Header closeButton onClick={close}>
                     <Modal.Title>Insira seus dados.</Modal.Title>
