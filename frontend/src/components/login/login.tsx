@@ -19,12 +19,12 @@ const Login = ({ open, close, logged, loGin }: ILoginProps) => {
     const [user, setUser] = useState<IUser>()
 
     const login = async () => {
-        const { email, senha } = user
-        const url = `http://localhost:10001//login/${email}/${senha}`
+        const { email, senha } = user;
+        const url = `http://localhost:10001/login/${email}/${senha}`;
         const { data } = await axios.get(url)
         loGin(data)
         if (data.id) {
-            logged()
+            logged();
         }
         close();
     }
@@ -41,7 +41,7 @@ const Login = ({ open, close, logged, loGin }: ILoginProps) => {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={close}>Fechar</Button>
-                    <Button variant="primary" onClick={() => { login() }}>Login</Button>
+                    <Button variant="primary" onClick={login}>Login</Button>
                 </Modal.Footer>
             </Modal.Dialog>
         </Modal>

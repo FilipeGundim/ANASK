@@ -1,25 +1,21 @@
-import { IAtividade } from '../../../models/models'
+import { Reducer } from 'redux'
+import { AtividadeStateReducer, atividadeActionReducer } from '../types'
 
-interface IAction {
-    type: string;
-    payload: IAtividade[];
-}
-
-interface IInitalState {
-    todasAtividades: IAtividade[];
-}
-
-const INITIAL_STATE: IInitalState = {
+const INITIAL_STATE: AtividadeStateReducer = {
     todasAtividades: [],
 }
 
-export default function (state = INITIAL_STATE, action: IAction) {
-
+const reducer: Reducer<AtividadeStateReducer, atividadeActionReducer> = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case 'GET_ATIVIDADES':
 
-            return { ...state, todasAtividades: action.payload }
+            return {
+                ...state,
+                todasAtividades: action.payload
+            }
 
         default: return { ...state }
     }
 }
+
+export default reducer;

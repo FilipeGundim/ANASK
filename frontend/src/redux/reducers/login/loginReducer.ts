@@ -1,26 +1,24 @@
+import { Reducer } from 'redux'
+import { loginStateReducer, loginActionReducer } from '../types'
 import { IUser } from '../../../models/models'
 
-interface IAction {
-    type: string;
-    payload: IUser;
+const INITIAL_STATE: loginStateReducer = {
+    user: {} as IUser
 }
 
-interface IInitalState {
-    user: IUser;
-}
-
-const INITIAL_STATE = {
-    user: {}
-}
-
-export default function (state = INITIAL_STATE, action: IAction) {
+const reducer: Reducer<loginStateReducer, loginActionReducer> = (state = INITIAL_STATE, action) => {
 
     switch (action.type) {
 
         case 'LOG_IN':
-            return { ...state, user: action.payload }
+            return {
+                ...state,
+                user: action.payload
+            }
 
         default:
             return { ...state }
     }
 }
+
+export default reducer;
