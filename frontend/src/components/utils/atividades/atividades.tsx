@@ -8,9 +8,9 @@ import { connect } from 'react-redux';
 import { IUser, IAtividade } from '../../../models/models';
 
 interface IAtividadeProps {
-    user: IUser;
+    user?: IUser;
     setAtividades: (data: any) => void;
-    todasAtividades: IAtividade[];
+    todasAtividades?: IAtividade[];
 }
 
 const Atividades = ({ setAtividades, user, todasAtividades }: IAtividadeProps) => {
