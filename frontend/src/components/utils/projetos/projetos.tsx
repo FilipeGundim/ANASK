@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { IUser, IProjeto } from '../../../models/models';
 
 interface IProjetosProps {
-    user: IUser;
+    user?: IUser;
 }
 
 const Projetos = ({ user }: IProjetosProps) => {
@@ -26,29 +26,29 @@ const Projetos = ({ user }: IProjetosProps) => {
     }
 
     useEffect(() => {
-        if (user) {
-            console.log(user)
-        }
-    }, [user])
+
+    }, [projetos])
 
     return (
         <div>
             <FormControl type="text" placeholder="Procurar projetos" className="mt-2 mb-2 w-50 mr-auto ml-auto justify-content-center" onChange={(e) => { getProjetos(e.target.value) }} />
             {
-                projetos.map((row, idx) => (
-                    <Jumbotron fluid key={idx}>
-                        <Container>
-                            <p className="h1">{row.titulo}</p>
-                            <p className="h2">{row.descricao}</p>
-                            <p className="h3">
-                                começo: {row.data_ini.replace("T00:00:00.000Z", "")}
-                                <br />
+                projetos ?
+                    projetos.map((row, idx) => (
+                        <Jumbotron fluid key={idx}>
+                            <Container>
+                                <p className="h1">{row.titulo}</p>
+                                <p className="h2">{row.descricao}</p>
+                                <p className="h3">
+                                    começo: {row.data_ini.replace("T00:00:00.000Z", "")}
+                                    <br />
                                 fim: {row.data_fim.replace("T00:00:00.000Z", "")}
-                            </p>
-                            <Button onClick={() => { inserirUserProjeto(row) }}>Ingressar</Button>
-                        </Container>
-                    </Jumbotron>
-                ))
+                                </p>
+                                <Button onClick={() => { inserirUserProjeto(row) }}>Ingressar</Button>
+                            </Container>
+                        </Jumbotron>
+                    )) :
+                    <div />
             }
         </div>
     )
