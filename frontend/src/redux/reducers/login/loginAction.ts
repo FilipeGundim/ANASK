@@ -1,5 +1,6 @@
-export function loGin(e){
-    console.log(e);
+import { IUser } from "../../../models/models";
+
+export function loGin(e: IUser){
     return{
         type: 'LOG_IN',
         payload: e

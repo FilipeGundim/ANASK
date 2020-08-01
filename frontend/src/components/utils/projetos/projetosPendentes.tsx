@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { IUser, IProjeto } from '../../../models/models';
 
 interface IProjetosProps {
-    user: IUser;
+    user?: IUser;
 }
 
 const Projetos = ({ user }: IProjetosProps) => {
@@ -23,7 +23,7 @@ const Projetos = ({ user }: IProjetosProps) => {
         if (user) {
             getProjetos()
         }
-    }, [user])
+    })
 
     return (
         <div className="w-75 justify-content-center mr-auto ml-auto">

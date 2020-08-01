@@ -6,7 +6,8 @@ const INITIAL_STATE: loginStateReducer = {
     user: {} as IUser
 }
 
-const reducer: Reducer<loginStateReducer, loginActionReducer> = (state = INITIAL_STATE, action) => {
+const reducer: Reducer<loginStateReducer, loginActionReducer> = 
+(state = INITIAL_STATE, action) => {
 
     switch (action.type) {
 

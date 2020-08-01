@@ -5,7 +5,9 @@ const INITIAL_STATE: AtividadeStateReducer = {
     todasAtividades: [],
 }
 
-const reducer: Reducer<AtividadeStateReducer, atividadeActionReducer> = (state = INITIAL_STATE, action) => {
+const reducer: Reducer<AtividadeStateReducer, atividadeActionReducer> = 
+(state = INITIAL_STATE, action) => {
+    
     switch (action.type) {
         case 'GET_ATIVIDADES':
 
